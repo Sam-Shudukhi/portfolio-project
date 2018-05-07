@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sam Shudukhi</title>
+    <title>{{blog.title}}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -27,43 +27,22 @@
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="https://linkedin.com/in/sam755">LinkedIn</a>
             <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-            <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+            <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
           </div>
         </div>
       </nav>
     </header>
 
     <main role="main">
+      <div class="container">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hi, I'm Sam</h1>
-          <p class="lead text-muted">Hey, my name is Sam and I love to make Django websites. It's the thrill of handelling the requests that people want!</p>
-          <p>
-            <a href="mailto:alshuduki@gmail.com" class="btn btn-primary my-2">Contact Me</a>
-          </p>
-          <img src="{% static 'Simon.jpg' %}" class="img-fluid" height="300" width="400" alt="Simon Willison" title="Simon Willison">
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-            {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{job.image.url}}">
-                <div class="card-body">
-                  <p class="card-text">{{job.summary}}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
+      <h1 class="text-center pt-3">{{ blog.title }}</h1>
+      <p class="text-center">{{blog.pub_date_only}}</p>
+      <img src="{{blog.image.url}}" class="img-fluid rounded mx-auto d-block" width="50%">
+      <br />
+      <p>{{blog.body}}</p>
       </div>
-
+      </div>
     </main>
 
     <footer class="text-muted">
